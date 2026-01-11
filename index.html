@@ -1,0 +1,812 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hania Kredyty — doradca kredytowy | Umów spotkanie</title>
+  <meta name="description" content="Profesjonalne doradztwo kredytowe: analiza zdolności, porównanie ofert banków, wsparcie od pierwszej rozmowy do podpisania umowy. Umów spotkanie online." />
+  <meta name="theme-color" content="#0b1220" />
+  <style>
+    :root{
+      --bg: #0b1220;
+      --panel: #0f1a2f;
+      --card: #0f1b33;
+      --text: #e8eefc;
+      --muted: #b9c6e6;
+      --line: rgba(255,255,255,.12);
+      --accent: #4aa3ff;
+      --accent2: #9fe7c4;
+      --shadow: 0 18px 45px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(900px 500px at 15% -10%, rgba(74,163,255,.18), transparent 60%),
+        radial-gradient(900px 500px at 95% 0%, rgba(159,231,196,.16), transparent 55%),
+        radial-gradient(1000px 600px at 50% 120%, rgba(74,163,255,.10), transparent 55%),
+        linear-gradient(180deg, #070b14 0%, #0b1220 40%, #070b14 100%);
+      line-height: 1.45;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container{ max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+    .row{ display: grid; gap: 22px; }
+    .grid-2{ grid-template-columns: 1.15fr .85fr; }
+    .grid-3{ grid-template-columns: repeat(3, 1fr); }
+    .grid-4{ grid-template-columns: repeat(4, 1fr); }
+
+    @media (max-width: 980px){
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    }
+
+    /* Header */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(7,11,20,.62);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 14px 0;
+      gap: 16px;
+    }
+    .brand{
+      display:flex; align-items:center; gap: 10px;
+      font-weight: 780; letter-spacing: .2px;
+    }
+    .logo{
+      width: 36px; height: 36px; border-radius: 12px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), transparent 55%),
+        linear-gradient(135deg, rgba(74,163,255,.95), rgba(159,231,196,.78));
+      box-shadow: 0 12px 30px rgba(74,163,255,.18);
+      border: 1px solid rgba(255,255,255,.20);
+    }
+    .brand small{ display:block; font-weight: 540; color: var(--muted); margin-top: 1px; }
+    nav ul{
+      list-style:none; display:flex; gap: 14px; padding:0; margin:0; align-items:center;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    nav ul a{ padding: 10px 10px; border-radius: 10px; }
+    nav ul a:hover{ background: rgba(255,255,255,.06); text-decoration:none; color: var(--text); }
+
+    .nav-actions{ display:flex; gap: 10px; align-items:center; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap: 10px;
+      padding: 11px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      font-weight: 720;
+      cursor: pointer;
+      transition: transform .08s ease, background .15s ease, border-color .15s ease;
+      user-select:none;
+      white-space: nowrap;
+    }
+    .btn:hover{ background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.25); text-decoration:none; }
+    .btn:active{ transform: translateY(1px); }
+    .btn-primary{
+      background: linear-gradient(135deg, rgba(74,163,255,.95), rgba(159,231,196,.88));
+      border-color: rgba(255,255,255,.24);
+      color: #07101e;
+      box-shadow: 0 16px 42px rgba(74,163,255,.22);
+    }
+    .btn-primary:hover{ filter: brightness(1.03); }
+    .pill{
+      display:inline-flex; align-items:center; gap: 8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-weight: 650;
+      font-size: 12px;
+    }
+    .dot{
+      width: 8px; height: 8px; border-radius: 99px;
+      background: var(--accent2);
+      box-shadow: 0 0 0 4px rgba(159,231,196,.15);
+    }
+
+    /* Hero */
+    .hero{
+      padding: 48px 0 26px;
+    }
+    .hero-card{
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: var(--radius2);
+      background:
+        radial-gradient(900px 420px at 5% 0%, rgba(74,163,255,.18), transparent 60%),
+        radial-gradient(900px 420px at 90% 0%, rgba(159,231,196,.14), transparent 55%),
+        rgba(15, 27, 51, .55);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .hero-inner{
+      padding: 34px;
+    }
+    @media (max-width: 980px){
+      .hero-inner{ padding: 22px; }
+      nav ul{ display:none; }
+    }
+
+    h1{
+      margin: 12px 0 10px;
+      font-size: 44px;
+      line-height: 1.05;
+      letter-spacing: -0.6px;
+    }
+    @media (max-width: 980px){
+      h1{ font-size: 34px; }
+    }
+    .lead{
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 60ch;
+      margin: 0 0 18px;
+    }
+    .hero-actions{ display:flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+    .hero-badges{
+      margin-top: 18px;
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items:center;
+      color: var(--muted);
+      font-weight: 620;
+      font-size: 13px;
+    }
+    .hero-badges span{
+      display:inline-flex; gap: 8px; align-items:center;
+      padding: 8px 10px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+    }
+    .check{
+      width: 18px; height: 18px; border-radius: 7px;
+      background: rgba(159,231,196,.20);
+      border: 1px solid rgba(159,231,196,.35);
+      display:inline-grid; place-items:center;
+      font-size: 12px;
+      color: var(--accent2);
+    }
+
+    .hero-side{
+      padding: 24px 24px 24px 0;
+    }
+    @media (max-width: 980px){
+      .hero-side{ padding: 0 22px 22px; }
+    }
+
+    .statcard{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      padding: 18px;
+      box-shadow: 0 14px 34px rgba(0,0,0,.22);
+    }
+    .statgrid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .stat{
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding: 14px;
+    }
+    .stat b{
+      display:block;
+      font-size: 22px;
+      letter-spacing: -0.2px;
+      margin-bottom: 3px;
+    }
+    .stat span{ color: var(--muted); font-weight: 620; font-size: 13px; }
+    .note{
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 12px;
+    }
+
+    /* Sections */
+    section{ padding: 36px 0; }
+    .section-title{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    h2{
+      margin: 0;
+      font-size: 26px;
+      letter-spacing: -0.4px;
+    }
+    .subtitle{
+      color: var(--muted);
+      max-width: 62ch;
+      margin: 6px 0 0;
+      font-size: 14px;
+      font-weight: 560;
+    }
+
+    .card{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      padding: 18px;
+      box-shadow: 0 14px 34px rgba(0,0,0,.22);
+    }
+    .card h3{
+      margin: 0 0 8px;
+      font-size: 16px;
+      letter-spacing: -0.2px;
+    }
+    .card p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Trust strip */
+    .trust{
+      padding-top: 18px;
+    }
+    .trust-strip{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 980px){
+      .trust-strip{ grid-template-columns: 1fr; }
+    }
+    .trust-item{
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      padding: 14px;
+      display:flex;
+      gap: 12px;
+      align-items:flex-start;
+    }
+    .icon{
+      width: 40px; height: 40px;
+      border-radius: 14px;
+      display:grid; place-items:center;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      font-size: 18px;
+    }
+    .trust-item b{ display:block; margin-bottom: 2px; }
+    .trust-item span{ color: var(--muted); font-size: 13px; font-weight: 560; }
+
+    /* Steps */
+    .steps{
+      counter-reset: step;
+    }
+    .step{
+      position: relative;
+      padding-left: 48px;
+    }
+    .step::before{
+      counter-increment: step;
+      content: counter(step);
+      position:absolute;
+      left: 0; top: 0;
+      width: 34px; height: 34px;
+      border-radius: 14px;
+      display:grid; place-items:center;
+      font-weight: 800;
+      color: #07101e;
+      background: linear-gradient(135deg, rgba(74,163,255,.95), rgba(159,231,196,.88));
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 16px 42px rgba(74,163,255,.16);
+    }
+
+    /* Booking */
+    .booking-wrap{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+      align-items: start;
+    }
+    @media (max-width: 980px){
+      .booking-wrap{ grid-template-columns: 1fr; }
+    }
+    .embed{
+      min-height: 520px;
+      border-radius: var(--radius);
+      border: 1px dashed rgba(255,255,255,.25);
+      background: rgba(255,255,255,.03);
+      display:grid;
+      place-items:center;
+      padding: 18px;
+      color: var(--muted);
+      text-align:center;
+    }
+    .embed code{
+      display:block;
+      background: rgba(0,0,0,.25);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 10px 12px;
+      border-radius: 12px;
+      margin-top: 10px;
+      color: var(--text);
+      overflow:auto;
+      max-width: 100%;
+      text-align:left;
+      font-size: 12px;
+    }
+    .list{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .list li{ margin: 7px 0; }
+
+    /* FAQ */
+    details{
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      padding: 14px;
+    }
+    summary{
+      cursor: pointer;
+      font-weight: 760;
+      list-style: none;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    details p{ margin: 10px 0 0; color: var(--muted); font-size: 14px; }
+
+    /* Footer */
+    footer{
+      border-top: 1px solid var(--line);
+      padding: 30px 0 40px;
+      color: var(--muted);
+    }
+    .footer-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 980px){
+      .footer-grid{ grid-template-columns: 1fr; }
+    }
+    .footer-grid b{ color: var(--text); }
+    .tiny{ font-size: 12px; opacity: .9; line-height: 1.45; }
+    .mutedlink{ color: var(--muted); }
+    .mutedlink:hover{ color: var(--text); text-decoration:none; }
+    .top{
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      display:none;
+    }
+    .top.show{ display:inline-flex; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="#start" aria-label="Strona główna">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          Hania Kredyty
+          <small>doradztwo kredytowe • online i stacjonarnie</small>
+        </div>
+      </a>
+
+      <nav aria-label="Nawigacja">
+        <ul>
+          <li><a href="#jak">Jak pracuję</a></li>
+          <li><a href="#spotkanie">Umów spotkanie</a></li>
+          <li><a href="#formularz">Formularz</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn" href="#spotkanie">Wybierz termin</a>
+        <a class="btn btn-primary" href="#spotkanie">Umów spotkanie</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="start">
+  <!-- HERO -->
+  <div class="container hero">
+    <div class="hero-card">
+      <div class="row grid-2">
+        <div class="hero-inner">
+          <span class="pill"><span class="dot"></span> Odpowiedź zwykle w 2–4 godziny • Pon–Sob</span>
+          <h1>Kredyt hipoteczny bez stresu — od rozmowy do podpisu umowy</h1>
+          <p class="lead">
+            Porównuję oferty banków, liczę realne koszty i prowadzę Cię krok po kroku.
+            Bez naciskania, bez “magii” i bez drobnego druku — za to z konkretnym planem działania.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#spotkanie" id="cta-book">Umów bezpłatne spotkanie (30 min)</a>
+            <a class="btn" href="#jak">Zobacz jak pracuję</a>
+          </div>
+
+          <div class="hero-badges" aria-label="Najważniejsze korzyści">
+            <span><span class="check">✓</span>Porównanie wielu banków</span>
+            <span><span class="check">✓</span>Analiza zdolności i kosztów</span>
+            <span><span class="check">✓</span>Wsparcie do decyzji i umowy</span>
+            <span><span class="check">✓</span>RODO i bezpieczeństwo danych</span>
+          </div>
+        </div>
+
+        <aside class="hero-side">
+          <div class="statcard">
+            <h3 style="margin:0 0 6px;">Dlaczego klienci wracają i polecają?</h3>
+            <p class="subtitle" style="margin:0;">
+              Dostajesz jasny obraz sytuacji: raty, koszty całkowite, ryzyka i sensowne warianty.
+            </p>
+
+            <div class="statgrid" aria-label="Statystyki i atuty">
+              <div class="stat">
+                <b>7+ lat</b>
+                <span>praktyki w analizie kredytowej</span>
+              </div>
+              <div class="stat">
+                <b>300+</b>
+                <span>przeprowadzonych analiz zdolności</span>
+              </div>
+              <div class="stat">
+                <b>10+ banków</b>
+                <span>oferty porównywane na bieżąco</span>
+              </div>
+              <div class="stat">
+                <b>0 zł</b>
+                <span>za pierwszą konsultację</span>
+              </div>
+            </div>
+
+            <p class="note">
+              * Podane liczby są przykładowe — dopasuj do swoich realnych danych. Najważniejsze jest zaufanie i zgodność z prawdą.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- Trust strip -->
+    <div class="trust">
+      <div class="trust-strip" aria-label="Zaufanie i bezpieczeństwo">
+        <div class="trust-item">
+          <div class="icon" aria-hidden="true">🛡️</div>
+          <div>
+            <b>Bezpieczny proces</b>
+            <span>Dane przetwarzane zgodnie z RODO, minimum informacji na start.</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="icon" aria-hidden="true">📊</div>
+          <div>
+            <b>Konkrety zamiast obietnic</b>
+            <span>Liczymy raty, koszty całkowite i scenariusze na zmianę stóp.</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="icon" aria-hidden="true">🤝</div>
+          <div>
+            <b>Wsparcie do podpisu umowy</b>
+            <span>Nie zostajesz sam. Pomagam w dokumentach i wnioskach.</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="icon" aria-hidden="true">⏱️</div>
+          <div>
+            <b>Szybkie terminy</b>
+            <span>Spotkanie online lub stacjonarnie. Wybierasz godzinę w kalendarzu.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAK PRACUJĘ -->
+  <section id="jak">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Jak pracuję</h2>
+          <p class="subtitle">
+            Prosty proces, który daje Ci kontrolę. Wszystko tłumaczę po ludzku: co jest ważne, co jest ryzykiem, co jest “opcją”.
+          </p>
+        </div>
+        <a class="btn" href="#spotkanie">Zarezerwuj termin</a>
+      </div>
+
+      <div class="row grid-4 steps">
+        <div class="card step">
+          <h3>Rozmowa i cel</h3>
+          <p>Ustalamy: kwota, wkład własny, typ nieruchomości, czas, Twoje priorytety.</p>
+        </div>
+        <div class="card step">
+          <h3>Analiza zdolności</h3>
+          <p>Sprawdzam dochody, zobowiązania i możliwości — bez straszenia i bez zgadywania.</p>
+        </div>
+        <div class="card step">
+          <h3>Porównanie ofert</h3>
+          <p>Wybieramy 2–3 najlepsze warianty i omawiamy realne koszty oraz warunki.</p>
+        </div>
+        <div class="card step">
+          <h3>Wniosek i finalizacja</h3>
+          <p>Pomagam zebrać dokumenty, złożyć wniosek i przejść cały proces aż do umowy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPOTKANIE + KALENDARZ -->
+  <section id="spotkanie">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Umów spotkanie</h2>
+          <p class="subtitle">
+            Wybierz termin w kalendarzu. Spotkanie trwa ~60 minut. Możemy spotkać się online (Teams/Google Meet) lub stacjonarnie.
+          </p>
+        </div>
+      </div>
+
+      <div class="booking-wrap">
+        <div class="embed" id="calendar-embed" aria-label="Miejsce na osadzony kalendarz">
+          <div>
+            <div class="pill" style="margin:0 auto 10px;"><span class="dot"></span> Kod do kalendarza (Google / Calendly / Cal.com)</div>
+            <div style="font-weight:780; color: var(--text); font-size: 18px;">Kalendarz rezerwacji</div>
+            <div style="margin-top:8px;">Wklej kod <b>&lt;iframe&gt;</b> od narzędzia rezerwacji i gotowe.</div>
+            <code>
+&lt;!-- Przykład (wklej swój) --&gt;
+&lt;iframe
+  src="TWOJ_LINK_DO_REZERWACJI"
+  width="100%" height="600"
+  style="border:0;border-radius:16px;"
+  loading="lazy"&gt;&lt;/iframe&gt;
+            </code>
+          </div>
+        </div>
+
+        <aside class="card">
+          <h3>Co zyskasz na spotkaniu</h3>
+          <ul class="list">
+            <li>Wstępna ocena zdolności i możliwe kwoty finansowania</li>
+            <li>Lista dokumentów “bez chaosu” — co, kiedy i po co</li>
+            <li>Omówienie kosztów: rata, prowizje, ubezpieczenia, całkowity koszt</li>
+            <li>Rekomendacja kolejnych kroków i plan działania</li>
+          </ul>
+
+          <hr style="border:0;border-top:1px solid var(--line); margin: 16px 0;">
+
+          <h3>Przygotuj (opcjonalnie)</h3>
+          <ul class="list">
+            <li>Dochód netto (UoP/B2B) i forma zatrudnienia</li>
+            <li>Aktualne zobowiązania (karty, limity, raty)</li>
+            <li>Wkład własny i orientacyjna cena nieruchomości</li>
+          </ul>
+
+          <div style="margin-top:16px; display:flex; gap: 10px; flex-wrap: wrap;">
+            <a class="btn btn-primary" href="#formularz">Wypełnij formularz przed spotkaniem</a>
+            <a class="btn" href="#kontakt">Masz pytanie? Napisz</a>
+          </div>
+
+          <p class="note">
+            Formularz traktuj jako „przyspieszacz”, nie obowiązek.
+          </p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULARZ (link do Twojej aplikacji / backendu) -->
+  <section id="formularz">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Formularz danych do analizy</h2>
+          <p class="subtitle">
+            Jeśli chcesz, możesz wypełnić dane wcześniej. Dzięki temu na spotkaniu od razu przechodzimy do konkretnych ofert.
+          </p>
+        </div>
+      </div>
+
+      <div class="row grid-3">
+        <div class="card">
+          <h3>1) Wypełnij dane</h3>
+          <p>Krótki formularz: dane kontaktowe, dochody, zobowiązania, cel kredytu.</p>
+        </div>
+        <div class="card">
+          <h3>2) Otrzymasz podsumowanie</h3>
+          <p>Możesz wydrukować podsumowanie lub otrzymać je na maila (PDF).</p>
+        </div>
+        <div class="card">
+          <h3>3) Spotkanie = konkret</h3>
+          <p>Na rozmowie omawiamy warianty i ryzyka, a nie “zbieramy papiery”.</p>
+        </div>
+      </div>
+
+      <!--
+      <div class="card" style="margin-top: 14px;">
+        <h3 style="margin-bottom:10px;">Przycisk do Twojego formularza</h3>
+        <p style="margin-bottom: 14px;">
+          Tu docelowo podepniesz stronę <b>/formularz</b> z własnym HTML/JS, a wysyłkę zrobisz do backendu Java (REST).
+        </p>
+        <div style="display:flex; gap: 12px; flex-wrap:wrap;">
+          <a class="btn btn-primary" href="#" id="goForm">Przejdź do formularza</a>
+          <a class="btn" href="#spotkanie">Wróć do rezerwacji terminu</a>
+        </div>
+        <p class="note">
+          Podmień link w JS (na dole pliku) na prawdziwy URL Twojej strony z formularzem.
+        </p>
+      </div>
+    </div>
+    -->
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>FAQ</h2>
+          <p class="subtitle">Najczęstsze pytania, które pomagają podjąć decyzję bez stresu.</p>
+        </div>
+      </div>
+
+      <div class="row" style="gap: 12px;">
+        <details>
+          <summary>Ile kosztuje współpraca?</summary>
+          <p>
+            Konsultacja jest bezpłatna. Na spotkaniu ustalamy, czy i jak mogę pomóc, a potem działamy krok po kroku.
+          </p>
+        </details>
+        <details>
+          <summary>Czy muszę od razu podawać wszystkie dane?</summary>
+          <p>
+            Nie. Na start wystarczą ogólne informacje. Formularz jest opcjonalny — przyspiesza analizę, ale nie jest obowiązkowy.
+          </p>
+        </details>
+        <details>
+          <summary>Jak wygląda spotkanie online?</summary>
+          <p>
+            Spotkanie odbywa się przez Teams/Google Meet. Omawiamy Twoją sytuację i plan działania. Jeśli trzeba, dostajesz listę dokumentów.
+          </p>
+        </details>
+        <details>
+          <summary>Jak dbasz o bezpieczeństwo danych?</summary>
+          <p>
+            Przetwarzam dane wyłącznie w celu przygotowania analizy i przedstawienia ofert. Masz pełną informację o zakresie i zgodach (RODO).
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="kontakt">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Kontakt</h2>
+          <p class="subtitle">Napisz lub zadzwoń. Jeśli wolisz — od razu wybierz termin w kalendarzu.</p>
+        </div>
+        <a class="btn btn-primary" href="#spotkanie">Umów spotkanie</a>
+      </div>
+
+      <div class="row grid-3">
+        <div class="card">
+          <h3>Telefon</h3>
+          <p><a class="mutedlink" href="tel:+48123123123">+48 123 123 123</a><br><span class="tiny">Pon–Pt 8:00–16:00</span></p>
+        </div>
+        <div class="card">
+          <h3>E-mail</h3>
+          <p><a class="mutedlink" href="mailto:kontakt@twojadomena.pl">kontakt@twojadomena.pl</a><br><span class="tiny">Odpowiadam zwykle w 2–4 godz.</span></p>
+        </div>
+        <div class="card">
+          <h3>Lokalizacja</h3>
+          <p>Zielona Góra i okolice / Online<br><span class="tiny">Dokładny adres po umówieniu spotkania.</span></p>
+        </div>
+      </div>
+
+      <p class="note">
+        Pamiętaj o zmianie danych !!!.
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container" id="stopka">
+    <div class="footer-grid">
+      <div>
+        <b>Hania Kredyty</b>
+        <div class="tiny" style="margin-top:8px;">
+          Doradztwo kredytowe: analiza zdolności, porównanie ofert, wsparcie w dokumentach i wnioskach.
+          <br>Spotkania online i stacjonarnie.
+        </div>
+      </div>
+      <div>
+        <b>Dokumenty</b>
+        <div class="tiny" style="margin-top:8px;">
+          <a class="mutedlink" href="#">Polityka prywatności</a><br>
+          <a class="mutedlink" href="#">RODO</a><br>
+          <a class="mutedlink" href="#">Regulamin</a>
+        </div>
+      </div>
+      <div>
+        <b>Uwaga</b>
+        <div class="tiny" style="margin-top:8px;">
+          Treści informacyjne. Ostateczne warunki kredytu zależą od banku oraz indywidualnej sytuacji klienta.
+        </div>
+      </div>
+    </div>
+
+    <div class="tiny" style="margin-top:18px; opacity:.75;">
+      © <span id="year"></span> Hania Kredyty — wszelkie prawa zastrzeżone.
+    </div>
+  </div>
+</footer>
+
+<a class="btn top" id="toTop" href="#start" aria-label="Do góry">↑</a>
+
+<script>
+  // Rok w stopce
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // "Do góry"
+  const toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 700) toTop.classList.add('show');
+    else toTop.classList.remove('show');
+  });
+
+  // Podmień ten link na prawdziwy URL Twojego formularza (HTML/JS + backend Java)
+  const FORM_URL = "https://twojadomena.pl/formularz";
+  document.getElementById('goForm').addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.href = FORM_URL;
+  });
+
+  // Smooth scroll (lekko poprawia UX w 1 pliku)
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const href = a.getAttribute('href');
+      if (!href || href === "#") return;
+      const el = document.querySelector(href);
+      if (!el) return;
+      e.preventDefault();
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      history.pushState(null, "", href);
+    });
+  });
+</script>
+</body>
+</html>
