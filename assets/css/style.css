@@ -518,3 +518,42 @@ footer{
 }
 
 .top.show{ display:inline-flex; }
+
+/* ================================
+   POLITYKA PRYWATNOŚCI / RODO
+   ================================ */
+
+.legal {
+  max-width: 820px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.legal h1 {
+  font-size: 32px;
+  margin-bottom: 24px;
+}
+
+.legal h2 {
+  font-size: 18px;
+  margin-top: 32px;
+  margin-bottom: 12px;
+}
+
+.legal p,
+.legal ul {
+  margin-bottom: 14px;
+}
+
+.legal ul {
+  padding-left: 20px;
+}
+
+.legal li {
+  margin-bottom: 6px;
+}
+
+.legal .small {
+  font-size: 12px;
+  opacity: 0.7;
+}
