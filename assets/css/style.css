@@ -520,40 +520,66 @@ footer{
 .top.show{ display:inline-flex; }
 
 /* ================================
-   POLITYKA PRYWATNOŚCI / RODO
+   POLITYKA PRYWATNOŚCI / RODO (PRO)
    ================================ */
 
 .legal {
-  max-width: 820px;
+  max-width: 860px;
   margin: 0 auto;
-  line-height: 1.7;
 }
 
+/* Wymuś czytelny wygląd jak dokument */
+.legal.paper {
+  background: #fff;
+  color: #0c1222;
+  border-radius: 16px;
+  padding: 26px 22px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.18);
+}
+
+/* Typografia dokumentu */
 .legal h1 {
-  font-size: 32px;
-  margin-bottom: 24px;
+  font-size: 26px;
+  line-height: 1.15;
+  margin: 0 0 14px;
 }
 
 .legal h2 {
-  font-size: 18px;
-  margin-top: 32px;
-  margin-bottom: 12px;
+  font-size: 16px;
+  line-height: 1.25;
+  margin: 22px 0 10px;
+  padding-top: 14px;
+  border-top: 1px solid #e6e8ee;
 }
 
-.legal p,
+.legal p {
+  margin: 0 0 12px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #0c1222;
+}
+
 .legal ul {
-  margin-bottom: 14px;
+  margin: 0 0 12px;
+  padding-left: 18px;
+  font-size: 14px;
+  line-height: 1.7;
 }
 
-.legal ul {
-  padding-left: 20px;
-}
+.legal li { margin: 6px 0; }
 
-.legal li {
-  margin-bottom: 6px;
-}
+.legal strong { font-weight: 700; }
 
+/* Drobny tekst (np. aktualizacja) */
+.legal .muted,
 .legal .small {
-  font-size: 12px;
-  opacity: 0.7;
+  color: #6b7280 !important;
+  font-size: 12px !important;
 }
+
+/* Mobile */
+@media (max-width: 520px){
+  .legal.paper { padding: 20px 16px; border-radius: 14px; }
+  .legal h1 { font-size: 22px; }
+}
+
