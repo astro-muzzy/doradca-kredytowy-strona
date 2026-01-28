@@ -451,6 +451,11 @@ h2{
 
 .list li{ margin: 7px 0; }
 
+.list .highlight {
+  font-weight: 600;
+  color: var(--accent, #111);
+}
+
 .hr{
   border:0;
   border-top: 1px solid var(--line);
