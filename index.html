@@ -313,7 +313,9 @@
           </p>
       
           <div class="success-actions">
-            <a class="btn btn-primary" href="#spotkanie">Powrót</a>
+            <button class="btn btn-primary" type="button" onclick="closeBookingSuccess()">
+              Zamknij
+            </button>
           </div>
         </div>
       </div>
@@ -407,6 +409,14 @@
 
 <a id="toTop" class="btn top" href="#start" aria-label="Do góry">↑ Do góry</a>
 <!-- <script src="https://assets.calendly.com/assets/external/widget.js" async></script> -->
+    <script>
+      function closeBookingSuccess() {
+        const success = document.getElementById("booking-success");
+        if (success) {
+          success.classList.add("hidden");
+        }
+      }
+    </script>
 <script src="./assets/js/main.js"></script>
 </body>
 </html>
