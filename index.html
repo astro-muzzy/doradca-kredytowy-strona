@@ -201,9 +201,7 @@
 
       <div class="booking-wrap">
         
-<div class="embed" id="calendar-embed">
-  <div id="my-cal-inline-spotkanie-1h" style="width:100%; min-height:700px;"></div>
-</div>
+<div class="embed" id="calendar-embed"></div>
 
 <script>
   (function (C, A, L) {
@@ -242,47 +240,60 @@
 
   Cal("init", "spotkanie-1h", { origin: "https://app.cal.com" });
 
-  Cal.ns["spotkanie-1h"]("inline", {
-    elementOrSelector: "#my-cal-inline-spotkanie-1h",
-    config: {
-      layout: "month_view",
-      useSlotsViewOnSmallScreen: true
-    },
-    calLink: "astro-muzzy-xacc4k/spotkanie-1h"
-  });
+  let calRenderId = 0;
 
-  Cal.ns["spotkanie-1h"]("ui", {
-    hideEventTypeDetails: true,
-    layout: "month_view"
-  });
+  function mountFreshCalendar() {
+    const host = document.getElementById("calendar-embed");
+    if (!host) return;
 
-Cal.ns["spotkanie-1h"]("on", {
-  action: "bookingSuccessfulV2",
-  callback: function () {
+    calRenderId += 1;
+    const inlineId = "my-cal-inline-spotkanie-1h-" + calRenderId;
+
+    host.innerHTML = `<div id="${inlineId}" style="width:100%; min-height:700px;"></div>`;
+
+    Cal.ns["spotkanie-1h"]("inline", {
+      elementOrSelector: "#" + inlineId,
+      config: {
+        layout: "month_view",
+        useSlotsViewOnSmallScreen: true
+      },
+      calLink: "astro-muzzy-xacc4k/spotkanie-1h"
+    });
+
+    Cal.ns["spotkanie-1h"]("ui", {
+      hideEventTypeDetails: true,
+      layout: "month_view"
+    });
+  }
+
+  function closeBookingSuccess() {
     const success = document.getElementById("booking-success");
-
     if (success) {
-      success.classList.remove("hidden");
+      success.classList.add("hidden");
     }
   }
-});
-  
-  // Cal.ns["spotkanie-1h"]("on", {
-  //   action: "bookingSuccessfulV2",
-  //   callback: function () {
-  //     console.log("BOOKING SUCCESS!!!");
-  //     const success = document.getElementById("booking-success");
-  //     const calendar = document.getElementById("calendar-embed");
 
-  //     if (calendar) {
-  //       calendar.style.display = "none";
-  //     }
+  // pierwszy render kalendarza
+  mountFreshCalendar();
 
-  //     if (success) {
-  //       success.classList.remove("hidden");
-  //     }
-  //   }
-  // });
+  // po udanej rezerwacji:
+  // 1) pokaż overlay
+  // 2) od razu przygotuj nowy, świeży kalendarz pod spodem
+  Cal.ns["spotkanie-1h"]("on", {
+    action: "bookingSuccessfulV2",
+    callback: function () {
+      const success = document.getElementById("booking-success");
+
+      if (success) {
+        success.classList.remove("hidden");
+      }
+
+      // przebuduj embed, żeby pod overlayem był już nowy kalendarz
+      setTimeout(function () {
+        mountFreshCalendar();
+      }, 150);
+    }
+  });
 </script>
         
         <aside class="card">
@@ -427,7 +438,7 @@ Cal.ns["spotkanie-1h"]("on", {
           success.classList.add("hidden");
         }
       }
-    </script> -->
+    </script> 
 
   <script>
   function closeBookingSuccess() {
@@ -440,7 +451,7 @@ Cal.ns["spotkanie-1h"]("on", {
     window.location.href = window.location.pathname + "#spotkanie";
     window.location.reload();
   }
-</script>
+</script> -->
 <script src="./assets/js/main.js"></script>
 </body>
 </html>
