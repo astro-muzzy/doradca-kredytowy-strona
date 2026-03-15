@@ -583,3 +583,61 @@ footer{
   .legal h1 { font-size: 22px; }
 }
 
+/* ================================
+   KALENDARZ / SPOTKANIE
+   ================================ */
+
+#calendar-embed {
+  background: #ffffff;
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  border-radius: 24px;
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  min-height: 760px;
+  display: flex;
+  align-items: stretch;
+}
+
+#calendar-embed > div {
+  width: 100%;
+  min-height: 700px;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+/* lepsze proporcje całej sekcji */
+.booking-wrap {
+  align-items: start;
+}
+
+/* żeby prawa karta była wizualnie spójna */
+.booking-wrap .card {
+  border-radius: 24px;
+}
+
+/* mobile */
+@media (max-width: 900px) {
+  #calendar-embed {
+    min-height: 680px;
+    padding: 12px;
+    border-radius: 20px;
+  }
+
+  #calendar-embed > div {
+    min-height: 620px;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  #calendar-embed {
+    min-height: 620px;
+    padding: 10px;
+    border-radius: 18px;
+  }
+
+  #calendar-embed > div {
+    min-height: 560px;
+    border-radius: 14px;
+  }
+}
