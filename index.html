@@ -256,22 +256,23 @@
     layout: "month_view"
   });
 
-    Cal("on", {
+  Cal.ns["spotkanie-1h"]("on", {
     action: "bookingSuccessfulV2",
     callback: function () {
       const success = document.getElementById("booking-success");
-      if (success) {
-        success.classList.remove("hidden");
-      }
-
       const calendar = document.getElementById("calendar-embed");
+
       if (calendar) {
         calendar.style.display = "none";
+      }
+
+      if (success) {
+        success.classList.remove("hidden");
       }
     }
   });
 </script>
-
+        
         <aside class="card">
           <h3>Co zyskasz na spotkaniu</h3>
           <ul class="list">
