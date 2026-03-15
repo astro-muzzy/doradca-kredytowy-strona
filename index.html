@@ -256,22 +256,33 @@
     layout: "month_view"
   });
 
-  Cal.ns["spotkanie-1h"]("on", {
-    action: "bookingSuccessfulV2",
-    callback: function () {
-      console.log("BOOKING SUCCESS!!!");
-      const success = document.getElementById("booking-success");
-      const calendar = document.getElementById("calendar-embed");
+Cal.ns["spotkanie-1h"]("on", {
+  action: "bookingSuccessfulV2",
+  callback: function () {
+    const success = document.getElementById("booking-success");
 
-      if (calendar) {
-        calendar.style.display = "none";
-      }
-
-      if (success) {
-        success.classList.remove("hidden");
-      }
+    if (success) {
+      success.classList.remove("hidden");
     }
-  });
+  }
+});
+  
+  // Cal.ns["spotkanie-1h"]("on", {
+  //   action: "bookingSuccessfulV2",
+  //   callback: function () {
+  //     console.log("BOOKING SUCCESS!!!");
+  //     const success = document.getElementById("booking-success");
+  //     const calendar = document.getElementById("calendar-embed");
+
+  //     if (calendar) {
+  //       calendar.style.display = "none";
+  //     }
+
+  //     if (success) {
+  //       success.classList.remove("hidden");
+  //     }
+  //   }
+  // });
 </script>
         
         <aside class="card">
@@ -408,7 +419,7 @@
 </footer>
 
 <a id="toTop" class="btn top" href="#start" aria-label="Do góry">↑ Do góry</a>
-<!-- <script src="https://assets.calendly.com/assets/external/widget.js" async></script> -->
+<!-- <script src="https://assets.calendly.com/assets/external/widget.js" async></script> 
     <script>
       function closeBookingSuccess() {
         const success = document.getElementById("booking-success");
@@ -416,7 +427,20 @@
           success.classList.add("hidden");
         }
       }
-    </script>
+    </script> -->
+
+  <script>
+  function closeBookingSuccess() {
+    const success = document.getElementById("booking-success");
+    if (success) {
+      success.classList.add("hidden");
+    }
+
+    // Odśwież stronę i wróć od razu do sekcji spotkania
+    window.location.href = window.location.pathname + "#spotkanie";
+    window.location.reload();
+  }
+</script>
 <script src="./assets/js/main.js"></script>
 </body>
 </html>
