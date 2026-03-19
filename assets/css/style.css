@@ -173,7 +173,8 @@ nav ul a:hover{
 }
 
 .btn-primary:hover{
-  filter: brightness(1.08);
+  filter: brightness(0.3);
+  text-decoration:none;
 }
 
 /* Pills / badges */
