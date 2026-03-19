@@ -173,7 +173,10 @@ nav ul a:hover{
 }
 
 .btn-primary:hover{
-  filter: brightness(0.3);
+  background: linear-gradient(180deg, #12325fde, #0a2449c7);
+  border-color: rgba(10, 36, 73, .45);
+  color: #ffffff;
+  box-shadow: 0 16px 40px rgba(10, 36, 73, .22);
   text-decoration:none;
 }
 
