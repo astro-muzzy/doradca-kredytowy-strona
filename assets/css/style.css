@@ -155,7 +155,7 @@ nav ul a:hover{
   box-shadow: 0 10px 24px rgba(10,36,73,.06);
 }
 
-.btn:hover{
+.btn:hover:not(.btn-primary){
   background: rgba(10,36,73,.04);
   border-color: rgba(10,36,73,.25);
   text-decoration:none;
