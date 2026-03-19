@@ -344,99 +344,6 @@
       <div class="booking-wrap">
         
 <div class="embed" id="calendar-embed"></div>
-
-<script>
-  (function (C, A, L) {
-    let p = function (a, ar) { a.q.push(ar); };
-    let d = C.document;
-
-    C.Cal = C.Cal || function () {
-      let cal = C.Cal;
-      let ar = arguments;
-
-      if (!cal.loaded) {
-        cal.ns = {};
-        cal.q = cal.q || [];
-        d.head.appendChild(d.createElement("script")).src = A;
-        cal.loaded = true;
-      }
-
-      if (ar[0] === L) {
-        const api = function () { p(api, arguments); };
-        const namespace = ar[1];
-        api.q = api.q || [];
-
-        if (typeof namespace === "string") {
-          cal.ns[namespace] = cal.ns[namespace] || api;
-          p(cal.ns[namespace], ar);
-          p(cal, ["initNamespace", namespace]);
-        } else {
-          p(cal, ar);
-        }
-        return;
-      }
-
-      p(cal, ar);
-    };
-  })(window, "https://app.cal.com/embed/embed.js", "init");
-
-  Cal("init", "spotkanie-1h", { origin: "https://app.cal.com" });
-
-  let calRenderId = 0;
-
-  function mountFreshCalendar() {
-    const host = document.getElementById("calendar-embed");
-    if (!host) return;
-
-    calRenderId += 1;
-    const inlineId = "my-cal-inline-spotkanie-1h-" + calRenderId;
-
-    host.innerHTML = `<div id="${inlineId}" style="width:100%; min-height:640px;"></div>`;
-
-    Cal.ns["spotkanie-1h"]("inline", {
-      elementOrSelector: "#" + inlineId,
-      config: {
-        layout: "month_view",
-        useSlotsViewOnSmallScreen: true
-      },
-      calLink: "astro-muzzy-xacc4k/spotkanie-1h"
-    });
-
-    Cal.ns["spotkanie-1h"]("ui", {
-      hideEventTypeDetails: true,
-      layout: "month_view"
-    });
-  }
-
-  function closeBookingSuccess() {
-    const success = document.getElementById("booking-success");
-    if (success) {
-      success.classList.add("hidden");
-    }
-  }
-
-  // pierwszy render kalendarza
-  mountFreshCalendar();
-
-  // po udanej rezerwacji:
-  // 1) pokaż overlay
-  // 2) od razu przygotuj nowy, świeży kalendarz pod spodem
-  Cal.ns["spotkanie-1h"]("on", {
-    action: "bookingSuccessfulV2",
-    callback: function () {
-      const success = document.getElementById("booking-success");
-
-      if (success) {
-        success.classList.remove("hidden");
-      }
-
-      // przebuduj embed, żeby pod overlayem był już nowy kalendarz
-      setTimeout(function () {
-        mountFreshCalendar();
-      }, 150);
-    }
-  });
-</script>
         
         <aside class="card">
           <h3>Co zyskasz na spotkaniu</h3>
@@ -574,5 +481,6 @@
 <a id="toTop" class="btn top" href="#start" aria-label="Do góry">↑ Do góry</a>
 
 <script src="./assets/js/main.js"></script>
+<script src="./assets/js/calendar.js"></script>
 </body>
 </html>
