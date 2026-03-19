@@ -710,6 +710,37 @@ h2{
   font-size: 12px;
 }
 
+.booking-trust{
+  margin: 0 0 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.booking-trust span{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 11px;
+  border-radius: 999px;
+  border: 1px solid rgba(10,36,73,.10);
+  background: rgba(10,36,73,.04);
+}
+
+@media (max-width: 640px){
+  .booking-trust{
+    gap: 8px;
+  }
+
+  .booking-trust span{
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 /* Lists */
 .list{
   margin: 0;
