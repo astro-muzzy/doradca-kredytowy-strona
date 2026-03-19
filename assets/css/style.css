@@ -173,9 +173,6 @@ nav ul a:hover{
 }
 
 .btn-primary:hover{
-  background: linear-gradient(180deg, #12325f, #0a2449);
-  color: #ffffff;
-  border-color: rgba(10,36,73,.45);
   filter: brightness(1.08);
 }
 
