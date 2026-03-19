@@ -458,12 +458,12 @@ h2{
 }
 
 /* Booking */
-.booking-wrap{
+/*.booking-wrap{
   display:grid;
   grid-template-columns: 1.1fr .9fr;
   gap: 18px;
   align-items: start;
-}
+} */
 
 @media (max-width: 980px){
   .booking-wrap{ grid-template-columns: 1fr; }
@@ -682,51 +682,70 @@ footer{
    KALENDARZ / SPOTKANIE
    ================================ */
 
+.booking-wrap{
+  display:grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.85fr);
+  gap: 18px;
+  align-items: start;
+}
+
 #calendar-embed{
-  background: #ffffff;
-  border: 1px solid rgba(10,36,73,0.08);
-  border-radius: 24px;
-  padding: 18px;
-  box-shadow: 0 10px 30px rgba(10,36,73,0.06);
-  min-height: 760px;
-  display: flex;
-  align-items: stretch;
+  background: rgba(255,255,255,.82);
+  border: 1px solid rgba(10,36,73,.08);
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0 8px 22px rgba(10,36,73,.05);
+  min-height: 0;
+  overflow: hidden;
 }
 
 #calendar-embed > div{
   width: 100%;
-  min-height: 700px;
-  border-radius: 18px;
+  height: 640px;
+  min-height: 640px;
+  border-radius: 14px;
   overflow: hidden;
+  display: block;
 }
 
 .booking-wrap .card{
-  border-radius: 24px;
+  border-radius: 20px;
 }
 
-@media (max-width: 900px){
-  #calendar-embed{
-    min-height: 680px;
-    padding: 12px;
-    border-radius: 20px;
-  }
-
+@media (max-width: 1200px){
   #calendar-embed > div{
+    height: 620px;
     min-height: 620px;
-    border-radius: 16px;
   }
 }
 
-@media (max-width: 640px){
+@media (max-width: 980px){
+  .booking-wrap{
+    grid-template-columns: 1fr;
+  }
+
   #calendar-embed{
-    min-height: 620px;
     padding: 10px;
     border-radius: 18px;
   }
 
   #calendar-embed > div{
-    min-height: 560px;
+    height: 620px;
+    min-height: 620px;
     border-radius: 14px;
+  }
+}
+
+@media (max-width: 640px){
+  #calendar-embed{
+    padding: 8px;
+    border-radius: 16px;
+  }
+
+  #calendar-embed > div{
+    height: 560px;
+    min-height: 560px;
+    border-radius: 12px;
   }
 }
 
