@@ -461,6 +461,131 @@ h2{
   box-shadow: 0 16px 35px rgba(10,36,73,.14);
 }
 
+/* Team / Poznaj nas */
+.team-wrap{
+  display:grid;
+  gap: 18px;
+}
+
+.team-card{
+  display:grid;
+  grid-template-columns: 240px 1fr;
+  gap: 22px;
+  align-items: center;
+  border-radius: 22px;
+  border: 1px solid rgba(10,36,73,.10);
+  background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(10,36,73,.03));
+  padding: 22px;
+  box-shadow: var(--shadow2);
+}
+
+.team-card-main{
+  border-color: rgba(10,36,73,.14);
+  box-shadow: 0 16px 36px rgba(10,36,73,.10);
+}
+
+.team-photo{
+  min-height: 260px;
+  border-radius: 20px;
+  border: 2px dashed rgba(10,36,73,.20);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.9), rgba(10,36,73,.04));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding: 18px;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.team-photo span{
+  opacity: .78;
+}
+
+.team-content h3{
+  margin: 6px 0 12px;
+  font-size: 28px;
+  line-height: 1.1;
+  letter-spacing: -0.4px;
+  color: var(--accent);
+}
+
+.team-content p{
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.team-role{
+  display:inline-flex;
+  align-items:center;
+  gap: 8px;
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: rgba(10,36,73,.07);
+  border: 1px solid rgba(10,36,73,.12);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .2px;
+  text-transform: uppercase;
+}
+
+.team-role-soft{
+  background: rgba(200,166,70,.10);
+  border: 1px solid rgba(200,166,70,.22);
+  color: #7a5e12;
+}
+
+.team-badges{
+  margin-top: 14px;
+  display:flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.team-badges span{
+  display:inline-flex;
+  align-items:center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(10,36,73,.10);
+  background: rgba(255,255,255,.85);
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.team-note{
+  margin-top: 14px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(10,36,73,.10);
+  background: rgba(10,36,73,.04);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@media (max-width: 980px){
+  .team-card{
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .team-photo{
+    min-height: 220px;
+  }
+
+  .team-content h3{
+    font-size: 24px;
+  }
+}
+
 /* Booking */
 /*.booking-wrap{
   display:grid;
