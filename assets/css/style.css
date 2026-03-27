@@ -39,7 +39,7 @@ a:hover { text-decoration: underline; }
 
 .container{ max-width: var(--max); margin: 0 auto; padding: 0 20px; }
 .row{ display: grid; gap: 22px; }
-.grid-2{ grid-template-columns: minmax(0, 1.2fr) minmax(320px, .8fr); }
+.grid-2{ grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr); }
 .grid-3{ grid-template-columns: repeat(3, 1fr); }
 .grid-4{ grid-template-columns: repeat(4, 1fr); }
 
@@ -246,10 +246,10 @@ nav ul a:hover{
 
 h1{
   margin: 12px 0 10px;
-  font-size: 48px;
-  line-height: 1.02;
+  font-size: 44px;
+  line-height: 1.03;
   letter-spacing: -0.8px;
-  max-width: 11ch;
+  max-width: 10ch;
 }
 
 @media (max-width: 980px){
@@ -314,104 +314,26 @@ h1{
 }
 
 .hero-side{
-  padding: 24px 24px 24px 0;
+  padding: 28px 28px 28px 0;
 }
 
 @media (max-width: 980px){
   .hero-side{ padding: 0 22px 22px; }
 }
 
-.statcard{
-  border-radius: var(--radius);
-  border: 1px solid rgba(10,36,73,.10);
-  background: rgba(255,255,255,.88);
+/* Hero side panel */
+.hero-side-panel{
+  display:flex;
+  flex-direction:column;
+  gap: 16px;
   padding: 18px;
+  border-radius: 22px;
+  border: 1px solid rgba(10,36,73,.10);
+  background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(10,36,73,.03));
   box-shadow: var(--shadow2);
 }
 
-.statgrid{
-  display:grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  margin-top: 12px;
-}
-
-.stat{
-  border-radius: 16px;
-  border: 1px solid rgba(10,36,73,.10);
-  background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(10,36,73,.03));
-  padding: 14px;
-}
-
-.stat b{
-  display:block;
-  font-size: 22px;
-  letter-spacing: -0.2px;
-  margin-bottom: 3px;
-}
-
-.stat span{
-  color: var(--muted);
-  font-weight: 650;
-  font-size: 13px;
-}
-
-.note{
-  color: var(--muted);
-  font-size: 13px;
-  margin-top: 12px;
-}
-
-/* Hero person */
-.hero-person-card{
-  background: #fff;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 20px 50px rgba(10,36,73,.15);
-  border: 1px solid rgba(10,36,73,.08);
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-
-.hero-person-card:hover{
-  transform: translateY(-4px);
-  box-shadow: 0 30px 70px rgba(10,36,73,.20);
-}
-
-.hero-person-card img{
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  object-position: center 22%;
-  display: block;
-}
-
-.hero-person-content{
-  padding: 16px;
-}
-
-.hero-role{
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--accent);
-  letter-spacing: .4px;
-  text-transform: uppercase;
-}
-
-.hero-person-content h3{
-  margin: 6px 0 6px;
-  font-size: 20px;
-  color: var(--accent);
-}
-
-.hero-person-content p{
-  margin: 0;
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
 .hero-trust-mini{
-  margin-top: 12px;
   display:flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -419,12 +341,68 @@ h1{
 
 .hero-trust-mini span{
   font-size: 12px;
-  padding: 6px 10px;
+  padding: 7px 11px;
   border-radius: 999px;
-  background: rgba(10,36,73,.05);
+  background: rgba(255,255,255,.88);
   border: 1px solid rgba(10,36,73,.10);
   color: var(--accent);
-  font-weight: 600;
+  font-weight: 700;
+}
+
+.hero-panel-head h3{
+  margin: 0 0 6px;
+  font-size: 18px;
+  color: var(--accent);
+}
+
+.hero-panel-head p{
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.hero-stats-grid{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.hero-stat{
+  min-height: 96px;
+  border-radius: 18px;
+  border: 1px solid rgba(10,36,73,.10);
+  background: rgba(255,255,255,.86);
+  padding: 18px 16px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.hero-stat b{
+  display:block;
+  font-size: 20px;
+  line-height: 1.1;
+  letter-spacing: -0.2px;
+  margin-bottom: 6px;
+  color: var(--accent);
+}
+
+.hero-stat span{
+  color: var(--muted);
+  font-weight: 650;
+  font-size: 13px;
+}
+
+.hero-panel-note{
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(10,36,73,.10);
+  background: rgba(10,36,73,.04);
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
 }
 
 /* Sections */
@@ -455,8 +433,7 @@ h2{
 }
 
 .section-title h2,
-.card h3,
-.statcard h3{
+.card h3{
   color: var(--accent);
 }
 
