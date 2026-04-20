@@ -263,10 +263,11 @@ nav ul a:hover{
 
 h1{
   margin: 12px 0 10px;
-  font-size: 52px;
-  line-height: 0.98;
-  letter-spacing: -1px;
-  max-width: 15ch;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.8px;
+  max-width: 17ch;
 }
 
 @media (max-width: 980px){
