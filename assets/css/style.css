@@ -829,3 +829,12 @@ footer{
   }
 }
 
+.contact-line {
+  margin: 6px 0;
+  font-size: 15px;
+}
+
+.contact-line strong {
+  display: inline-block;
+  min-width: 70px;
+}
